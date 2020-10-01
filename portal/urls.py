@@ -137,6 +137,7 @@ from portal.views.teacher.teacher_resources import teacher_resources
 from portal.views.terms import terms
 from django.conf import settings
 from django.conf.urls.static import static
+from portal.views.aimmo.student import AimmoStoryPageView
 
 js_info_dict = {"packages": ("conf.locale",)}
 
@@ -306,6 +307,10 @@ urlpatterns = [
     url(r"^play/join/$", student_join_organisation, name="student_join_organisation"),
     url(r"^play/rapid-router/$", play_rapid_router, name="play_rapid_router"),
     url(r"^play/kurono/$", play_aimmo, name="play_aimmo"),
+    url(
+        r"^play/kurono/story/$",
+        AimmoStoryPageView.as_view(),
+    ),
     url(r"^about", about, name="about"),
     url(r"^help/$", contact, name="help"),
     url(r"^terms", terms, name="terms"),
@@ -438,7 +443,7 @@ urlpatterns = [
     url(r"^hijack/", include("hijack.urls", namespace="hijack")),
     url(r"^cms/", include(wagtailadmin_urls)),
     url(r"^documents/", include(wagtaildocs_urls)),
-    url(r"^pages/", include(wagtail_urls)),
+    url(r"^/", include(wagtail_urls)),
 ]
 
 

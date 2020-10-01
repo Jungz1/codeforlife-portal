@@ -1,0 +1,34 @@
+{% extends 'portal/base.html' %}
+{% load banner_tags %}
+{% load wagtailcore_tags %}
+
+
+{% block css %}
+{{ block.super }}
+{% endblock css %}
+
+{% block scripts %}
+{{ block.super }}
+{% endblock scripts %}
+
+{% block pageID %}id="homeWrapper"{% endblock %}
+
+{% block subNav %}
+{{ block.super }}
+<div id="kurono_story_page"></div>
+{% endblock subNav %}
+
+{% block google_analytics %}
+{{ block.super }}
+{% endblock %}
+
+
+{% block content %}
+{% banner_with_explicit_args title=page.title subtitle=page.subtitle %}
+{{ block.super }}
+<section class="background row text-left">
+    <div class="col-sm-8 col-center">
+        {% include_block page.body %}
+    </div>
+</section>
+{% endblock content %}

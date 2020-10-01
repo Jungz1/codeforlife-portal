@@ -101,6 +101,7 @@ SETTINGS = {
         "hijack",
         "compat",
         "hijack_admin",
+        "wagtail.contrib.routable_page",
         "wagtail.contrib.forms",
         "wagtail.contrib.redirects",
         "wagtail.embeds",

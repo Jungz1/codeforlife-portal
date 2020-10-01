@@ -6,8 +6,12 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 from django_countries.fields import CountryField
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.core import blocks
 from wagtail.snippets.models import register_snippet
+from wagtail.core.models import Page
+from wagtail.core.fields import StreamField
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 
 
 class UserProfile(models.Model):
@@ -243,3 +247,19 @@ class AimmoCharacter(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class ContentPage(Page):
+    """A page that can contain any static freeform content"""
+
+    template = "portal/aimmo/story.html"
+
+    identifier = models.CharField(unique=True, blank=True, max_length=255)
+    subtitle = models.TextField()
+    body = StreamField([("paragraph", blocks.RichTextBlock())])
+
+    content_panels = Page.content_panels + [
+        FieldPanel("identifier"),
+        FieldPanel("subtitle"),
+        StreamFieldPanel("body"),
+    ]
