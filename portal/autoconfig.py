@@ -148,6 +148,8 @@ RELATIONSHIPS = [
     ),
 ]
 
+DEBUG = True
+
 try:
     import django_pandasso
 
