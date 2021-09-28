@@ -75,4 +75,5 @@ def student_direct_login(request, user_id, login_id):
     if user:
         login(request, user)
         return HttpResponseRedirect(reverse_lazy("student_details"))
-    return HttpResponseRedirect(reverse_lazy("home"))
+    raise Exception("FAILED AUTH!")
+    # return HttpResponseRedirect(reverse_lazy("home"))
