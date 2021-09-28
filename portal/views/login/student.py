@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils.html import escape
 from django.http import HttpResponseRedirect
+from django.conf import settings
 
 from portal.forms.play import StudentLoginForm, StudentClassCodeForm
 
@@ -71,9 +72,10 @@ class StudentLoginView(LoginView):
 
 def student_direct_login(request, user_id, login_id):
     """Direct login for student with unique url without username and password"""
+    print(settings.AUTHENTICATION_BACKENDS)
     user = authenticate(request, user_id=user_id, login_id=login_id)
     if user:
         login(request, user)
         return HttpResponseRedirect(reverse_lazy("student_details"))
-    raise Exception("FAILED AUTH!")
+    raise Exception("FAILED AUTH %s" % settings.AUTHENTICATION_BACKENDS)
     # return HttpResponseRedirect(reverse_lazy("home"))
