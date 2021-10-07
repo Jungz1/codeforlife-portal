@@ -2,23 +2,9 @@
 {% load staticfiles %}
 {% load app_tags %}
 
-{% block css %}
-{{ block.super }}
-{% endblock css %}
-
-{% block scripts %}
-{{ block.super }}
-{% endblock scripts %}
-
-{% block pageID %}id="homeWrapper"{% endblock %}
-
-{% block subNav %}
-{{ block.super }}
-<div id="student_login_page"></div>
-{% endblock subNav %}
-
 {% block content %}
-{{ block.super }}
+<div id="student_login_page"></div>
+
 <section class="row">
     <span class="oval"></span>
     <span class="polygon"></span>

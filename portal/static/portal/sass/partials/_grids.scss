@@ -36,10 +36,10 @@ $column--icon-width: 3%;
 
 .grid__fit {
   grid-template-columns: repeat(auto-fit, minmax($card-minimum-width, 1fr));
-  padding: 0;
 }
 
 .card {
+  border-radius: 4px;
   @include _box-shadow(0px, 5px, 8px, 0px, $color-background-box-shadow);
   @include _margin($spacing * 4, 0px, 0px, 0px);
   background-color: $color-background-secondary;
@@ -64,7 +64,9 @@ $column--icon-width: 3%;
   }
 
   .card__image {
-    @include _border-radius(16px, 16px, 0px, 0px);
+    display: block;
+    margin: auto;
+    border-radius: 4px;
   }
 
   .card__thumbnail {
@@ -227,17 +229,12 @@ $column--icon-width: 3%;
     ks2: 3,
     lower-ks3: 4,
     intermediate-ks3: 2,
-    upper-ks3: 3,
+    upper-ks3: 3
   );
 
-  @each $key-stage,
-    $max-resource-sheets-number in $max-resource-sheets-numbers-per-key-stage
-  {
+  @each $key-stage, $max-resource-sheets-number in $max-resource-sheets-numbers-per-key-stage {
     .grid-resources--#{$key-stage} {
-      grid-template-columns: $column--info-width repeat(
-          $max-resource-sheets-number,
-          auto
-        );
+      grid-template-columns: $column--info-width repeat($max-resource-sheets-number, auto);
     }
   }
 }

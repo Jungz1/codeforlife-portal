@@ -3,24 +3,8 @@
 {% load app_tags %}
 {% load banner_tags %}
 {% load table_tags %}
-{% load cache %}
-
-{% block materials %}
-<a class="button--menu button--menu--secondary button--menu--enabled button--menu--teacher--active">Teaching Resources</a>
-{% endblock materials %}
-
-{% block css %}
-{{ block.super }}
-{% endblock css %}
-
-{% block scripts %}
-{{ block.super }}
-{% endblock scripts %}
-
-{% block pageID %}id="homeWrapper"{% endblock %}
 
 {% block subNav %}
-{{ block.super }}
 {% banner banner_name="BANNER" %}
 <div class="sticky-subnav sub-nav sub-nav--teacher">
     <a href="#user_guide" class="button button--secondary button--secondary--light">User guide</a>
@@ -31,9 +15,6 @@
 {% endblock subNav %}
 
 {% block content %}
-{{ block.super }}
-
-{% cache 3600 fragment-materials-page %}
 <div id="materials_page"></div>
 
 <div id="user_guide">
@@ -356,5 +337,4 @@
     });
 </script>
 
-{% endcache %}
 {% endblock content %}
