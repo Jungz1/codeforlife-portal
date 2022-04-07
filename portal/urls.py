@@ -481,6 +481,7 @@ urlpatterns = [
     url(r"^cms/", include(wagtailadmin_urls)),
     url(r"^documents/", include(wagtaildocs_urls)),
     url(r"^pages/", include(wagtail_urls)),
+    
 ]
 
 

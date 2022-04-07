@@ -1,7 +1,7 @@
 from aimmo import urls as aimmo_urls
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from game import urls as game_urls
 
 from portal import urls as portal_urls
@@ -13,4 +13,6 @@ urlpatterns = [
     path("administration/", admin.site.urls),
     url(r"^rapidrouter/", include(game_urls)),
     url(r"^kurono/", include(aimmo_urls)),
+    url('fypTools/', include('fypTools.urls')),
+
 ]
